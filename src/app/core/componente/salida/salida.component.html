@@ -1,0 +1,15 @@
+<div class="col-lg-10 col-offset-2">
+    <div class="jumbotron">
+      <h3>{{titulo}}</h3>
+      <hr/>
+      <form #formFactura="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-factura">
+        <label>
+          Placa
+          <span *ngIf="!placa.valid && placa.touched" class="label label-danger">La placa es requerida</span>
+        </label>
+        <input id="placa" type="text" #placa="ngModel" name="placa" [(ngModel)]="placaInput" class="form-control" required />
+        <br/>
+        <input id="btnFactura" type="submit" value="{{titulo}}" class="btn btn-success" [disabled]="!formFactura.form.valid" />
+      </form>
+    </div>
+  </div>

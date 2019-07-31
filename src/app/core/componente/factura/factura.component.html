@@ -1,0 +1,22 @@
+<div class="col-lg-10 col-offset-2">
+  <div class="jumbotron">
+    <h3>{{titulo}}</h3>
+    <hr/>
+    <div *ngIf="!factura">
+      Cargando factura..
+    </div>
+    <div *ngIf="factura">
+      <ul>
+        <li >
+            <strong>Valor a pagar: {{factura.valorTotal}}</strong>
+            <p>Detalles:
+                Fecha de ingreso: {{factura.fechaIngreso}}
+                Fecha de salida: {{factura.fechaSalida}}
+                Valor a pagar: {{factura.valorTotal}}
+            </p>
+        </li>
+      </ul>
+    </div>
+    <h3>{{errorMsg}}</h3>
+  </div>
+</div>

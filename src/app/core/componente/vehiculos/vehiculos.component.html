@@ -1,0 +1,30 @@
+<div class="col-lg-10 col-offset-2">
+  <div class="jumbotron">
+    <h3>{{titulo}}</h3>
+    <hr />
+    <div *ngIf="!vehiculosActivos">
+      Cargando vehiculos..
+    </div>
+    <div *ngIf="vehiculosActivos">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Placa</th>
+            <th scope="col">Fecha de ingreso</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Retirar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehiculoActivo of vehiculosActivos">
+            <td>{{vehiculoActivo.placa}}</td>
+            <td>{{vehiculoActivo.fechaIngreso}}</td>
+            <td> {{vehiculoActivo.descripcion}}</td>
+            <td>  <button type="button" class="btn btn-danger btn-sm" [routerLink]="['/factura', vehiculoActivo.placa]">
+                    X
+                  </button></td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>

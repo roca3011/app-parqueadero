@@ -1,0 +1,34 @@
+<div class="col-lg-10 col-offset-2">
+    <div class="jumbotron">
+      <h3>{{titulo}}</h3>
+      <hr/>
+      <input id="mensaje" type="text" value={{message}} hidden/>
+      <form #formVehiculo="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-vehiculo">
+        <label>
+
+          Placa
+          <span *ngIf="!placa.valid && placa.touched" class="label label-danger">La placa es requerida</span>
+        </label>
+        <input id="placa" type="text" #placa="ngModel" name="placa" [(ngModel)]="vehiculo.placa" class="form-control" required />
+
+        <label>
+          Cilindraje
+          <span *ngIf="!cilindraje.valid && cilindraje.touched" class="label label-danger">El cilindraje es requerido</span>
+        </label>
+        <input id="cilindraje" type="number" #cilindraje="ngModel" name="cilindraje" [(ngModel)]="vehiculo.cilindraje" class="form-control" required pattern="[0-9]+" />
+
+        <label>
+          Tipo de vehiculo
+          <span *ngIf="!tipoVehiculo.valid && tipoVehiculo.touched" class="label label-danger">El tipo de Vehiculo es requerido</span>
+        </label>
+
+        <select id="tipoVehiculo" #tipoVehiculo="ngModel" [(ngModel)] ="vehiculo.tipoVehiculo" name="tipoVehiculo" class="form-control">
+            <option name=tipoVehiculo *ngFor="let tipoVehiculo of tiposVehiculo"  [value]="tipoVehiculo.idTipoVehiculo" >{{tipoVehiculo.descripcion}}</option>
+
+        </select>
+        <br/>
+
+        <input id= "btnRegistro" type="submit" value="{{titulo}}" class="btn btn-success" [disabled]="!formVehiculo.form.valid" />
+      </form>
+    </div>
+  </div>
